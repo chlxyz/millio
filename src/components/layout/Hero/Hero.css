@@ -1,0 +1,6 @@
+.hero{padding:64px 0 32px;border-bottom:1px solid var(--line)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,96px);line-height:.9;letter-spacing:-.04em;margin:0}
+.hero h1 i{font-style:italic;font-weight:400}
+.hero h1 .val{color:var(--accent)}
+.hero p{margin:16px 0 0;color:var(--muted);font-size:15px;max-width:520px;line-height:1.5}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
