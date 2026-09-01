@@ -10,7 +10,7 @@ export function Header() {
       </div>
       <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
         {/* <span style={{ display: "none" }}>no upload • nothing stored</span> */}
-        <span>no login • nothing stored</span>
+        {/* <span>no login • nothing stored</span> */}
       </div>
     </div>
   )
