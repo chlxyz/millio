@@ -1,8 +1,8 @@
-import { useCompressor } from "../../../stores/CompressorContext"
+// import { useCompressor } from "../../../stores/CompressorContext"
 import "./Header.css"
 
 export function Header() {
-  const { targetKB } = useCompressor()
+  // const { targetKB } = useCompressor()
   return (
     <div className="wrap top">
       <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
