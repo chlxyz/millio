@@ -1,0 +1,7 @@
+.level-btns{display:flex;gap:8;flex-wrap:wrap}
+.chip{appearance:none;border:1px solid var(--line);background:#FCFCF9;color:var(--ink);padding:9px 16px;border-radius:999px;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s}
+.chip:hover:not(:disabled){border-color:var(--ink)}
+.chip--on{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.chip--sm{padding:6px 12px;font-size:12px}
+.level-big{font-size:34px !important;white-space:nowrap}

@@ -88,5 +88,29 @@ export async function compressImageToTarget(file: File, targetKB: number): Promi
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
   const fallback = await canvasToBlob(canvas, 0.1)
   URL.revokeObjectURL(img.src)
+  // ponytail: output must never exceed the input
+  if (fallback.size >= file.size) {
+    return { blob: file, size: file.size, quality: 1, scale: 1, keptOriginal: true, alreadyEfficient: true }
+  }
   return { blob: fallback, size: fallback.size, quality: 0.1, scale: w / origW, keptOriginal: false }
+}
+
+// Auto level: smallest readable, no search — one full-size JPEG at the readability floor.
+export async function compressImageToMinimum(file: File): Promise<CompressResult> {
+  const img = await loadBitmap(file)
+  const w = img.naturalWidth || (img as unknown as { width: number }).width
+  const h = img.naturalHeight || (img as unknown as { height: number }).height
+  const canvas = document.createElement("canvas")
+  canvas.width = Math.max(1, Math.round(w))
+  canvas.height = Math.max(1, Math.round(h))
+  const ctx = canvas.getContext("2d")!
+  ctx.fillStyle = "#ffffff"
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+  const blob = await canvasToBlob(canvas, 0.65)
+  URL.revokeObjectURL(img.src)
+  if (blob.size >= file.size) {
+    return { blob: file, size: file.size, quality: 1, scale: 1, keptOriginal: true }
+  }
+  return { blob, size: blob.size, quality: 0.65, scale: 1, keptOriginal: false }
 }

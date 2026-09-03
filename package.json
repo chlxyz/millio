@@ -12,6 +12,8 @@
     "dev:tunnel": "ngrok http 5173 --log stdout"
   },
   "dependencies": {
+    "gifsicle-wasm-browser": "^1.5.19",
+    "gifuct-js": "^2.1.2",
     "jszip": "^3.10.1",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^6.3.289",
